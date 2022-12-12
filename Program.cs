@@ -1,33 +1,16 @@
 ﻿/*
-    Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
-    452 -> 11
-    82 -> 10
-    9012 -> 12
+Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
+6, 1, 33 -> [6, 1, 33]
 */
 
-int NumberLength(int number)
+int[] numbers = new int[8];
+Random rnd = new Random();
+for (int i = 0; i < numbers.Length; i++)
 {
-    int index = 0;
-    while (number > 0)
-    {
-        number /= 10;
-        index++;
-    }
-    return index;
+    numbers[i] = rnd.Next();
 }
-
-void SumNumbers(int number, int length)
-{
-    int sum = 0;
-    for (int i = 0; i < length; i++)
-    {
-        sum += number % 10;
-        number /= 10;
-    }
-    Console.WriteLine(sum);
-}
-
-Console.WriteLine("Введите число");
-int number = Convert.ToInt32(Console.ReadLine());
-int length = NumberLength(number);
-SumNumbers(number, length);
+Console.Write("[");
+for (int i = 0; i < numbers.Length; i ++)
+    Console.Write(numbers[i]+(i < numbers.Length - 1 ? ", " : ""));
+Console.Write("]");
