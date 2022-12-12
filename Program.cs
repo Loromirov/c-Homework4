@@ -1,27 +1,33 @@
 ﻿/*
-Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
-
-3, 5 -> 243 (3⁵)
-
-2, 4 -> 16
+    Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+    452 -> 11
+    82 -> 10
+    9012 -> 12
 */
 
-int numberA = ReadInt("Введите число A: ");
-int numberB = ReadInt("Введите число B: ");
-DegreeNumbers(numberA, numberB);
-
-void DegreeNumbers(int a, int b)
+int NumberLength(int number)
 {
-    int result = 1;
-    for (int i = 1; i <= b; i++)
+    int index = 0;
+    while (number > 0)
     {
-        result = result * a;
+        number /= 10;
+        index++;
     }
-    Console.WriteLine(result);
+    return index;
 }
 
-int ReadInt(string message)
+void SumNumbers(int number, int length)
 {
-    Console.WriteLine(message);
-    return Convert.ToInt32(Console.ReadLine());
+    int sum = 0;
+    for (int i = 0; i < length; i++)
+    {
+        sum += number % 10;
+        number /= 10;
+    }
+    Console.WriteLine(sum);
 }
+
+Console.WriteLine("Введите число");
+int number = Convert.ToInt32(Console.ReadLine());
+int length = NumberLength(number);
+SumNumbers(number, length);
